@@ -1,7 +1,13 @@
 
+
+
+
 // prompt user for choice and store it
 function playerChoice() {
-    return prompt("Choose rock, paper, or scissors: ").toLowerCase();
+    player = prompt("Choose rock, paper, or scissors: ").toLowerCase();
+    if (player === 'paper' || player === 'rock' || player === 'scissors') {
+        return player
+    }else{playerChoice()}
 }
 
 // get computers random choice
@@ -19,21 +25,54 @@ function computerChoice() {
 
 // compare values
 function compare(computerSelection, playerSelection) {
-    if (playerSelection === computerSelection){
+    if (playerSelection === computerSelection) {
+        console.log("Tie");
         return "Tie";
-    }else if (playerSelection === 'paper'){
-        if (computerSelection === 'rock'){
+    }else if (playerSelection === 'paper') {
+        if (computerSelection === 'rock') {
+            console.log("Win");
             return "win";
-        }else {return "lose"}
-    }else if(playerSelection === 'rock'){
-        if (computerSelection === 'scissors'){
+        }else {
+            console.log("Lose");
+            return "lose"
+        }
+    }else if(playerSelection === 'rock') {
+        if (computerSelection === 'scissors') {
+            console.log("Win");
             return "win";
-        }else {return "lose"}
+        }else {
+            console.log("Lose");
+            return "lose"
+        }
     }else{
-        if (computerSelection === 'paper'){
+        if (computerSelection === 'paper') {
+            console.log("Win");
             return "win";
-        }else {return "lose"}
+        }else {
+            console.log("Lose");
+            return "lose"
+        }
     }
 }
 
-//      store win
+//Play the game once
+function playRound(){
+    return compare(computerChoice(), playerChoice());
+}
+
+//Play 5 round game, keep track of wins/losses
+function game(){
+    let player = 0;
+    let computer = 0;
+    for (let i = 0; i < 5; i++) {
+        let round = playRound();
+        if (round === 'win') {
+            player += 1;
+        }else if (round === 'lose') {
+            computer += 1;
+        }else {i -= 1}
+    }
+    if (player > computer) {
+        return "You Win!";
+    }else {return "You Lose!"}
+}
