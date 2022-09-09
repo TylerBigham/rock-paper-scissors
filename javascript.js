@@ -1,5 +1,8 @@
+
 // prompt user for choice and store it
-let playerChoice = prompt("Choose rock, paper, or scissors: ");
+function playerChoice() {
+    return prompt("Choose rock, paper, or scissors: ").toLowerCase();
+}
 
 // get computers random choice
 function computerChoice() {
@@ -13,6 +16,24 @@ function computerChoice() {
         return compChoice = 'scissors'
     }
 }
-//      store value
+
 // compare values
+function compare(computerSelection, playerSelection) {
+    if (playerSelection === computerSelection){
+        return "Tie";
+    }else if (playerSelection === 'paper'){
+        if (computerSelection === 'rock'){
+            return "win";
+        }else {return "lose"}
+    }else if(playerSelection === 'rock'){
+        if (computerSelection === 'scissors'){
+            return "win";
+        }else {return "lose"}
+    }else{
+        if (computerSelection === 'paper'){
+            return "win";
+        }else {return "lose"}
+    }
+}
+
 //      store win
