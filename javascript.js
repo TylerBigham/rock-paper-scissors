@@ -1,14 +1,26 @@
 
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+
+rock.addEventListener('click', () => {
+    playRound('rock');
+});
+paper.addEventListener('click', () => {
+    playRound('paper');
+});
+scissors.addEventListener('click', () => {
+    playRound('scissors');
+});
 
 
-
-// prompt user for choice and store it
+/* prompt user for choice and store it
 function playerChoice() {
     player = prompt("Choose rock, paper, or scissors: ").toLowerCase();
     if (player === 'paper' || player === 'rock' || player === 'scissors') {
         return player
     }else{playerChoice()}
-}
+}*/
 
 // get computers random choice
 function computerChoice() {
@@ -56,11 +68,11 @@ function compare(computerSelection, playerSelection) {
 }
 
 //Play the game once
-function playRound(){
-    return compare(computerChoice(), playerChoice());
+function playRound(playerChoice){
+    return compare(computerChoice(), playerChoice);
 }
 
-//Play 5 round game, keep track of wins/losses
+/*Play 5 round game, keep track of wins/losses
 function game(){
     let player = 0;
     let computer = 0;
@@ -75,4 +87,4 @@ function game(){
     if (player > computer) {
         return "You Win!";
     }else {return "You Lose!"}
-}
+}*/
