@@ -3,15 +3,22 @@ const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 
+let player = 0;
+let computer = 0;
+
 rock.addEventListener('click', () => {
-    playRound('rock');
+    game(playRound('rock'));
+    final();
 });
 paper.addEventListener('click', () => {
-    playRound('paper');
+    game(playRound('paper'));
+    final();
 });
 scissors.addEventListener('click', () => {
-    playRound('scissors');
+    game(playRound('scissors'));
+    final();
 });
+
 
 
 /* prompt user for choice and store it
@@ -72,19 +79,20 @@ function playRound(playerChoice){
     return compare(computerChoice(), playerChoice);
 }
 
-/*Play 5 round game, keep track of wins/losses
-function game(){
-    let player = 0;
-    let computer = 0;
-    for (let i = 0; i < 5; i++) {
-        let round = playRound();
-        if (round === 'win') {
-            player += 1;
-        }else if (round === 'lose') {
-            computer += 1;
-        }else {i -= 1}
+//Play 5 round game, keep track of wins/losses
+function game(round){
+    if (round === 'win') {
+        player += 1;
+    }else if (round === 'lose') {
+        computer += 1;
     }
-    if (player > computer) {
-        return "You Win!";
-    }else {return "You Lose!"}
-}*/
+}    
+//Check in there is a winner
+function final(){    
+    console.log(player);
+    if (player === 5 ) {
+        console.log("You Win!");
+    }else if (computer === 5){
+        console.log("You Lose!")
+    }
+}
