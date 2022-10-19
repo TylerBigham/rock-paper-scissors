@@ -2,20 +2,26 @@
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
+const playerScore = document.querySelector('#player');
+const computerScore = document.querySelector('#computer');
+const winLose = document.createElement('div');
 
 let player = 0;
 let computer = 0;
 
 rock.addEventListener('click', () => {
     game(playRound('rock'));
+    score();
     final();
 });
 paper.addEventListener('click', () => {
     game(playRound('paper'));
+    score();
     final();
 });
 scissors.addEventListener('click', () => {
     game(playRound('scissors'));
+    score();
     final();
 });
 
@@ -79,7 +85,7 @@ function playRound(playerChoice){
     return compare(computerChoice(), playerChoice);
 }
 
-//Play 5 round game, keep track of wins/losses
+//Keep track of wins/losses
 function game(round){
     if (round === 'win') {
         player += 1;
@@ -87,12 +93,26 @@ function game(round){
         computer += 1;
     }
 }    
+
+//Display score
+function score(){
+    playerScore.textContent = player;
+    computerScore.textContent = computer;
+
+}
+
 //Check in there is a winner
 function final(){    
     console.log(player);
     if (player === 5 ) {
         console.log("You Win!");
+        player = 0;
+        computer = 0;
+        score();
     }else if (computer === 5){
         console.log("You Lose!")
+        player = 0;
+        computer = 0;
+        score();
     }
 }
