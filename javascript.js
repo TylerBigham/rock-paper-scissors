@@ -4,7 +4,8 @@ const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 const playerScore = document.querySelector('#player');
 const computerScore = document.querySelector('#computer');
-const winLose = document.createElement('div');
+const winLose = document.querySelector('#status');
+
 
 let player = 0;
 let computer = 0;
@@ -51,30 +52,30 @@ function computerChoice() {
 // compare values
 function compare(computerSelection, playerSelection) {
     if (playerSelection === computerSelection) {
-        console.log("Tie");
+        winLose.textContent = "Tie";
         return "Tie";
     }else if (playerSelection === 'paper') {
         if (computerSelection === 'rock') {
-            console.log("Win");
+            winLose.textContent = "Win";
             return "win";
         }else {
-            console.log("Lose");
+            winLose.textContent = "Lose";
             return "lose"
         }
     }else if(playerSelection === 'rock') {
         if (computerSelection === 'scissors') {
-            console.log("Win");
+            winLose.textContent = "Win";
             return "win";
         }else {
-            console.log("Lose");
+            winLose.textContent = "Lose";
             return "lose"
         }
     }else{
         if (computerSelection === 'paper') {
-            console.log("Win");
+            winLose.textContent = "Win";
             return "win";
         }else {
-            console.log("Lose");
+            winLose.textContent = "Lose";
             return "lose"
         }
     }
@@ -105,12 +106,12 @@ function score(){
 function final(){    
     console.log(player);
     if (player === 5 ) {
-        console.log("You Win!");
+        winLose.textContent = "You Win!";
         player = 0;
         computer = 0;
         score();
     }else if (computer === 5){
-        console.log("You Lose!")
+        winLose.textContent = "You Lose!";
         player = 0;
         computer = 0;
         score();
